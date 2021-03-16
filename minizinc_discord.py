@@ -4,7 +4,7 @@ import os
 import random
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import minizinc
 
@@ -38,7 +38,7 @@ class Option:
     async def convert(cls, ctx, argument):
         arguments = argument.split("=")
         if len(arguments) != 2:
-            raise BadArgument("Invalid option")
+            raise OptionError("Invalid option")
 
         return cls(arguments[0], arguments[1])
 
